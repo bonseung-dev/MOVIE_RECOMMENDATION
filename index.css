@@ -1,3 +1,36 @@
-#test {
-    color: red;
+.top {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.col {
+    margin: 10px;
+    flex: 1 1 200px;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    width: 100%; /* 이미지 너비를 카드에 맞춤 */
+    height: auto; /* 비율 유지 */
+    object-fit: contain;
+}
+
+.card-title {
+    text-align: center;
 }

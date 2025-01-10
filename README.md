@@ -1,4 +1,8 @@
 ## 1. 프로젝트 구조 설정
-##  1-1. index.html, index.css, index.js 생성
+##  1-1. index.html, index.css, index.js 생성 및 연결 확인
 ##  1-2. HTML 파일에 기본적인 구조(헤더, 본문, 푸터 등)를 작성
 ##  1-3. 가져온 영화 api 중, title(제목)을 이용해서 console에 출력
+## 2. UI 기본 구조 설계
+## 2-1. 영화 카드 UI 기본 구조 설계 (HTML)
+## 2-2. 카드 레이아웃 디자인 (Flexbox or Grid 사용)
+## 2-3. 카드 정보(포스터, 제목, 요약, 평점) 등 API에서 받아온 데이터를 카드 형태로 화면에 출력
