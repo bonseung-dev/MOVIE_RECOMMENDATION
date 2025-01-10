@@ -1,4 +1,12 @@
- const options = {
+const searchBtn = document.querySelector("#searchBtn");
+const searchInput = document.querySelector("#search-txt");
+
+function fetchData () {
+    fetch();
+}
+
+
+const options = {
     method: 'GET', 
     headers: { 
         accept: 'application/json', 
@@ -19,13 +27,15 @@ fetch(url, options)
         });
     })
     .catch(err => console.error(err)); // 오류 발생 시 콘솔에 출력
-
+    searchBtn.addEventListener("click", function() {
+        alert("test")
+    })
 // 영화 카드 생성 함수
 function createMovieCard(movie) {
     // 영화 제목, 포스터 URL, 평점 가져오기
     let movieName = movie.original_title; // 제목
     let posterImg = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; // 포스터 이미지 URL
-    let voreAver = movie.vote_average; // 평점
+    let voteAver = movie.vote_average; // 평점
 
     // HTML 문자열 생성
     let html = `
@@ -33,8 +43,8 @@ function createMovieCard(movie) {
             <div class="card">
                 <img src="${posterImg}" alt="${movieName} 포스터" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">${movieName}</h5>
-                    <p class="card-aver">평점: ${voreAver}</p>
+                    <h3 class="card-title">${movieName}</h3>
+                    <p class="card-aver">평점: ${voteAver}</p>
                 </div>
             </div>
         </div>
@@ -48,5 +58,8 @@ function createMovieCard(movie) {
     const childElement = tempElement.firstElementChild;
 
     return childElement; // 생성한 카드 요소를 반환
+
+    
+    
 }
 
