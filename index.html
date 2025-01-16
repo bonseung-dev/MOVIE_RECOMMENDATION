@@ -5,35 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
-    
     <title>Movie Project</title>
 </head>
 
 <body>
     <header class="top">
-        <div class = "top-img">
+        <div class="top-img">
             <img src="https://nbcamp.spartacodingclub.kr/_next/static/media/newLogo.a1d35235.svg">
         </div>
         <div>
-            <h1>영화 검색</h1>
-            <form class="search-box">
-                <label>
-                    <input id="search-txt" type="text" placeholder="제목을 입력해주세요">
+            <a href="index.html"><h1>영화 검색</h1></a>
+                    <input id="searchTxt" type="text" placeholder="제목을 입력해주세요">
                     <button id="searchBtn">
                         button
                     </button>
-                    <script src="./index.js" defer></script>
-                </label>
-            </form>
         </div>
     </header>
-    <main>
-        <div class="main">
-            <!-- 카드 -->
-        </div>
-    </main>
-    <footer>
-    </footer>
+    <ul id="result"></ul>
+    <script src="./index.js" defer></script>
 </body>
 
 </html>
