@@ -16,12 +16,19 @@
         <div>
             <a href="index.html"><h1>영화 검색</h1></a>
                     <input id="searchTxt" type="text" placeholder="제목을 입력해주세요">
-                    <button id="searchBtn">
-                        button
-                    </button>
+                    <button id="searchBtn" type="button">🔍</button>
         </div>
     </header>
     <ul id="result"></ul>
+    <!-- modal start-->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&#128500;</span>
+            <img id="modal-image" src="" alt="포스터 이미지"/>
+            <h1 id="modal-title"></h1>
+            <p id="modal-body"></p>
+        </div>
+    </div>
     <script src="./index.js" defer></script>
 </body>
 

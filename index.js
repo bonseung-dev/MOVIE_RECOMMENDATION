@@ -1,8 +1,12 @@
-const resultUl = document.querySelector("#result");
-// 여기에서 외부로부터 데이터를 가지고 와서 ul태그에 넣으면 되겠다.
+const resultUl = document.querySelector("#result"); // ul 태그 변수화
 const searchBtn = document.querySelector("#searchBtn"); // 버튼
 const searchInput = document.querySelector("#searchTxt"); // 검색창
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; // 이미지 url
+const modal = document.querySelector(".modal"); // 모달
+const modalTitle = document.getElementById("modal-title"); // 모달 제목
+const modalBody = document.getElementById("modal-body"); // 모달 내용
+const modalImage = document.getElementById("modal-image"); // 모달 사진
+const closeModal = document.querySelector(".close"); // 모달 닫기
 const options = {
     method: 'GET',
     headers: {
@@ -11,21 +15,22 @@ const options = {
     }
 };
 
-let postArray = [];
 
-function fetchData () {
+let postArray = [];
+// 패치 데이터
+function fetchData() {
     fetch('https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1', options)
-    .then(res => res.json())
-    .then(res => {
-        postArray = res.results;
-        displayPosts(postArray);
-        
-    })
+        .then(res => res.json())
+        .then(res => {
+            postArray = res.results;
+            displayPosts(postArray);
+
+        })
 }
 
 
 
-function displayPosts (posts) {
+function displayPosts(posts) {
     let movieStr = "";
     for (let i = 0; i < posts.length; i++) {
         movieStr += `<li class="item" data-id = "${posts[i].id}">
@@ -38,15 +43,45 @@ function displayPosts (posts) {
 }
 fetchData();
 
-
-searchBtn.addEventListener("click", function(){
-    // 1. 검색 field에 입력된 값을 가져와야 함.
-    // 2. 그 값으로 list를 필터링
-    const keyword = searchInput.value;
-
+// 필터링 함수
+function filterPosts() {
+    const keyword = searchInput.value.toLowerCase(); // 입력된 키워드 가져오기
     const filteredPosts = postArray.filter(function (res) {
-       return res.title.toLowerCase().includes(keyword);
+        return res.title.toLowerCase().includes(keyword);
     });
-    displayPosts(filteredPosts);
+    displayPosts(filteredPosts); // 필터링된 결과 표시
+}
+
+// 필터링 이벤트
+searchBtn.addEventListener("click", filterPosts);
+
+// 엔터 키 호출 함수
+searchInput.addEventListener("keypress", function (e) {
+    if (event.key === 'Enter') {
+        filterPosts(); // 필터링 함수 호출
+    }
 });
+
+// 모달창
+resultUl.addEventListener("click", function (e) {
+    const item = e.target.closest(".item");
+    if (item) {
+        const movieId = item.getAttribute("data-id");
+        const selectedMovie = postArray.find(movie => movie.id == movieId);
+
+        if (selectedMovie) {
+            modalTitle.textContent = selectedMovie.title;
+            modalBody.textContent = selectedMovie.overview;
+            modalImage.src = imageBaseUrl + selectedMovie.poster_path;
+            modal.style.display = "block"; // 모달 열기
+        }
+    }
+});
+
+// 모달창 닫기
+closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+
 

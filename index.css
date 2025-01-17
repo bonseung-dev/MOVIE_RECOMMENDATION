@@ -34,10 +34,15 @@ a {
 }
 
 #searchBtn {
-    width: 5%;
-    border-radius: 20px;
-    border: 1px solid #bbb;
-    padding: 10px 12px;
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+    border-radius: 5px;
+    width: 60px;
+    padding: 5px 5px;
+    font-size: 20px;
+    line-height: 1;
+
 }
 
 #result {
@@ -69,4 +74,45 @@ a {
     width: 100%;
     height: 85%;
     object-fit: cover;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+    background-color: white;
+    margin-top: 20px;
+    margin: 5% auto;
+    padding: 20px;
+    width: 30%;
+    position: relative;
+    border-radius: 5px;
+    max-height: 80%;
+    overflow-y: auto; 
+}
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+.modal img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+    
+}
+.close {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    font-size: 40px;
+    cursor: pointer;
 }
